@@ -1,0 +1,12 @@
+.searchBox{
+	color:orange;
+	font-size:1rem;
+	padding:10px;
+	text-align:center;
+	border-radius: 0.75rem;
+
+}
+.searchBox:focus{
+	background-color: #ade8f4;
+	outline:none;
+}

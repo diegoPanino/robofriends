@@ -1,0 +1,15 @@
+.card{
+	margin:20px;
+	padding:50px;
+	background-color: rgba(50,100,150,0.5);
+	box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
+	display:inline-block;
+	-moz-osx-font-smoothing: grayscale;
+  	backface-visibility: hidden;
+  	transform: translateZ(0);
+  	transition: transform 0.25s ease-out;
+	border-radius: 2rem;
+}
+.card:hover{
+	transform: scale(1.05);
+}

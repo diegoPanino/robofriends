@@ -1,0 +1,9 @@
+.scroll{
+	overflow-y:scroll;
+	height:50rem;
+	margin-top:1em;
+	border-top:solid 1px #502599;
+}
+::-webkit-scrollbar {
+	background:transparent;
+}
