@@ -10,11 +10,15 @@ export default class App extends Component{
     super(props);
     this.state = {robots:[],
                   searchValue:"",
+                  set:5,
                 };
   };
 
   onChangeSearch=(e)=>{
     this.setState({searchValue:e.target.value})
+  }
+  onChangeRadio = (e)=>{
+    this.setState({set:e.target.value})
   }
 
   componentDidMount(){
@@ -28,9 +32,9 @@ export default class App extends Component{
     return (
         <div className="tc">
           <h1>Robofriends</h1>
-          <SearchBox  onChange={this.onChangeSearch}/>
+          <SearchBox  onChange={this.onChangeSearch} onChangeRadio ={this.onChangeRadio}/>
            <ScrollBox> 
-            <CardList robots={filterRobots} />
+            <CardList robots={filterRobots} set = {this.state.set} />
           </ScrollBox>
         </div>
       );

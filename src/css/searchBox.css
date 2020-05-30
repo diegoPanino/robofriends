@@ -10,3 +10,13 @@
 	background-color: #ade8f4;
 	outline:none;
 }
+.radioForm{
+	margin-top:10px;
+	color:orange;
+	font-size: 1.5em;
+
+}
+.radioInput{
+	padding:10px;
+	
+}
