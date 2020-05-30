@@ -8,11 +8,13 @@ import './css/App.css';
 export default class App extends Component{
   constructor(props){
     super(props);
-    this.state = {robots:[]};
+    this.state = {robots:[],
+                  searchValue:"",
+                };
   };
 
   onChangeSearch=(e)=>{
-    console.log(e.target.value);
+    this.setState({searchValue:e.target.value})
   }
 
   componentDidMount(){
@@ -20,12 +22,15 @@ export default class App extends Component{
   }
 
   render(){
+    const {robots,searchValue} = this.state;
+    const filterRobots = robots.filter(robot=> {
+        return robot.name.toLowerCase().includes(searchValue.toLowerCase())})
     return (
         <div className="tc">
           <h1>Robofriends</h1>
           <SearchBox  onChange={this.onChangeSearch}/>
            <ScrollBox> 
-            <CardList robots={this.state.robots} />
+            <CardList robots={filterRobots} />
           </ScrollBox>
         </div>
       );
