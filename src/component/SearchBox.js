@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './css/searchBox.css';
+import '../css/searchBox.css';
 
 export const SearchBox = ({onChange, onChangeRadio}) => {
 	const loop = [1,2,3,4,5];

@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {CardList} from './CardList';
-import {SearchBox} from './SearchBox';
-import {ScrollBox} from './ScrollBox';
+import {CardList} from '../component/CardList';
+import {SearchBox} from '../component/SearchBox';
+import {ScrollBox} from '../component/ScrollBox';
 
-import './css/App.css';
+import '../css/App.css';
 
 export default class App extends Component{
   constructor(props){

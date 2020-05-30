@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './css/Card.css'
+import '../css/Card.css'
 
 export const Card = ({id,name,email,set}) =>{
 	return(
