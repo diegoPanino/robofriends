@@ -17,7 +17,7 @@ export const requestRobots = () => (dispatch) =>{
 		type:constant.REQUEST_ROBOTS_PENDING,
 	});
 	fetch("https://jsonplaceholder.typicode.com/users")
-	.then(response => response.JSON())
+	.then(response => response.json())
 	.then(data => dispatch({
 					type:constant.REQUEST_ROBOTS_SUCCESS,
 					payload:data

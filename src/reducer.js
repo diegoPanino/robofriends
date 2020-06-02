@@ -5,7 +5,8 @@ import {SEARCH_INPUT,
 		REQUEST_ROBOTS_FAILED} from './type';
 
 const initialStateSearch ={
-	searchField:""
+	searchField:"",
+	
 }
 
 const initialStateRobots ={
