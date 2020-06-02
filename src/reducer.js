@@ -6,7 +6,7 @@ import {SEARCH_INPUT,
 
 const initialStateSearch ={
 	searchField:"",
-	
+	set:1
 }
 
 const initialStateRobots ={
@@ -38,4 +38,13 @@ export const requestRobots = (state = initialStateRobots, action = {}) =>{
 		default:
 			return state;
 	}//switch
+}
+
+export const changeSet = (state = initialStateSearch, action = {}) =>{
+	switch(action.type){
+		case RADIO_INPUT:
+			return {...state, set: action.payload}
+		default:
+			return state;
+	}
 }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {setSearchRobot, requestRobots} from '../action';
+import {setSearchRobot, requestRobots, setChangeSet} from '../action';
 import {CardList} from '../component/CardList';
 import {SearchBox} from '../component/SearchBox';
 import {ScrollBox} from '../component/ScrollBox';
@@ -14,12 +14,14 @@ const mapStateToProps = state =>{
     robots: state.requestRobots.robots,
     isPending: state.requestRobots.isPending,
     error: state.requestRobots.error,
+    set: state.changeSet.set
   }
 }
 
 const mapDispatchToProps =(dispatch)=>{
  return { 
   onChangeSearch:(e) => dispatch(setSearchRobot(e.target.value)),
+  onChangeRadio:(e) => dispatch(setChangeSet(e.target.value)),
   onRequestRobots:() => dispatch(requestRobots())
   }
 }
@@ -40,7 +42,7 @@ class App extends Component{
   }
 
   render(){
-    const {searchValue , onChangeSearch, isPending, robots} = this.props;
+    const {searchValue , onChangeSearch, isPending, robots, set, onChangeRadio} = this.props;
     const filterRobots = robots.filter(robot=> {
         return robot.name.toLowerCase().includes(searchValue.toLowerCase())})
     return (
@@ -49,10 +51,10 @@ class App extends Component{
           (
                   <div className="tc">
                     <h1>Robofriends</h1>
-                    <SearchBox  onChange={onChangeSearch} onChangeRadio ={this.onChangeRadio}/>
+                    <SearchBox  onChange={onChangeSearch} onChangeRadio ={onChangeRadio}/>
                      <ScrollBox> 
                         <ErrorBoundry>
-                          <CardList robots={filterRobots} set = {this.state.set} />
+                          <CardList robots={filterRobots} set = {set} />
                         </ErrorBoundry>
                     </ScrollBox>
                   </div>)
