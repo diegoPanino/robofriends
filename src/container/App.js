@@ -1,42 +1,62 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {setSearchRobot, requestRobots} from '../action';
 import {CardList} from '../component/CardList';
 import {SearchBox} from '../component/SearchBox';
 import {ScrollBox} from '../component/ScrollBox';
+import ErrorBoundry from '../component/ErrorBoundry';
 
 import '../css/App.css';
 
-export default class App extends Component{
+const mapStateToProps = state =>{
+  return {
+    searchValue: state.searchRobots.searchField,
+    robots: state.requestRobots.robots,
+    isPending: state.requestRobots.isPending,
+    error: state.requestRobots.error,
+  }
+}
+
+const mapDispatchToProps =(dispatch)=>{
+ return { 
+  onChangeSearch:(e) => dispatch(setSearchRobot(e.target.value)),
+  onRequestRobots:() => dispatch(requestRobots())
+  }
+}
+
+class App extends Component{
   constructor(props){
     super(props);
-    this.state = {robots:[],
-                  searchValue:"",
-                  set:5,
-                };
-  };
+    this.state = {set:"",};
+};  
 
-  onChangeSearch=(e)=>{
-    this.setState({searchValue:e.target.value})
-  }
+  
   onChangeRadio = (e)=>{
     this.setState({set:e.target.value})
   }
 
   componentDidMount(){
-    fetch("https://jsonplaceholder.typicode.com/users").then(response=>response.json()).then(users=>{this.setState({robots:users})})
+    this.props.onRequestRobots();
   }
 
   render(){
-    const {robots,searchValue} = this.state;
+    const {searchValue , onChangeSearch, isPending, robots} = this.props;
     const filterRobots = robots.filter(robot=> {
         return robot.name.toLowerCase().includes(searchValue.toLowerCase())})
     return (
-        <div className="tc">
-          <h1>Robofriends</h1>
-          <SearchBox  onChange={this.onChangeSearch} onChangeRadio ={this.onChangeRadio}/>
-           <ScrollBox> 
-            <CardList robots={filterRobots} set = {this.state.set} />
-          </ScrollBox>
-        </div>
+      isPending ?
+          <h1 className="loading tc">Loading</h1> :
+          (
+                  <div className="tc">
+                    <h1>Robofriends</h1>
+                    <SearchBox  onChange={onChangeSearch} onChangeRadio ={this.onChangeRadio}/>
+                     <ScrollBox> 
+                        <ErrorBoundry>
+                          <CardList robots={filterRobots} set = {this.state.set} />
+                        </ErrorBoundry>
+                    </ScrollBox>
+                  </div>)
       );
   }
 }
+export default connect(mapStateToProps,mapDispatchToProps)(App);

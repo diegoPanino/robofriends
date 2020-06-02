@@ -9,7 +9,7 @@ export const SearchBox = ({onChange, onChangeRadio}) => {
 			<input type="radio"
 					 value={i}
 					 name="setChoice"
-					 onChange={onChangeRadio}/>Set {i}
+					 onChange={onChangeRadio} />Set {i}
 		</label>)})
 	
 
