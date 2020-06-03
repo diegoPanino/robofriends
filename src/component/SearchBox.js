@@ -2,14 +2,16 @@ import React from 'react';
 
 import '../css/searchBox.css';
 
-export const SearchBox = ({onChange, onChangeRadio}) => {
+export const SearchBox = ({onChange, onChangeRadio, checkedOpt}) => {
 	const loop = [1,2,3,4,5];
 	const radioBtn = loop.map(i=>{return (
 		<label key={i} className="radioInput">
 			<input type="radio"
 					 value={i}
-					 name="setChoice"
-					 onChange={onChangeRadio} />Set {i}
+					 name="RadioBtn"
+					 onChange={onChangeRadio}
+					 defaultChecked = {i===checkedOpt}
+					 />Set {i}
 		</label>)})
 	
 

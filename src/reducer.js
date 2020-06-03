@@ -20,6 +20,8 @@ export const searchRobots = (state=initialStateSearch, action={}) =>{
 		case SEARCH_INPUT:{
 			return {...state, searchField:action.payload}
 		}//case search input
+		case RADIO_INPUT:
+			return {...state, set: action.payload}
 		default:{
 			return state;
 		}//default case
@@ -40,11 +42,3 @@ export const requestRobots = (state = initialStateRobots, action = {}) =>{
 	}//switch
 }
 
-export const changeSet = (state = initialStateSearch, action = {}) =>{
-	switch(action.type){
-		case RADIO_INPUT:
-			return {...state, set: action.payload}
-		default:
-			return state;
-	}
-}

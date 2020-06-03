@@ -14,7 +14,7 @@ const mapStateToProps = state =>{
     robots: state.requestRobots.robots,
     isPending: state.requestRobots.isPending,
     error: state.requestRobots.error,
-    set: state.changeSet.set
+    set: state.searchRobots.set
   }
 }
 
@@ -29,7 +29,7 @@ const mapDispatchToProps =(dispatch)=>{
 class App extends Component{
   constructor(props){
     super(props);
-    this.state = {set:"",};
+    this.state = {set:1,};
 };  
 
   
@@ -51,7 +51,7 @@ class App extends Component{
           (
                   <div className="tc">
                     <h1>Robofriends</h1>
-                    <SearchBox  onChange={onChangeSearch} onChangeRadio ={onChangeRadio}/>
+                    <SearchBox  onChange={onChangeSearch} onChangeRadio ={onChangeRadio} checkedOpt= {set}/>
                      <ScrollBox> 
                         <ErrorBoundry>
                           <CardList robots={filterRobots} set = {set} />
