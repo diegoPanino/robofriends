@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card} from './Card';
+import {Card, AddCard} from './Card';
 
 export const CardList = ({robots,set}) =>{
 		const cards =robots.map(robot=>{
@@ -15,6 +15,7 @@ export const CardList = ({robots,set}) =>{
 		return (
 			<div>
 				{cards}
+				<AddCard />
 			</div>
 			);
 	}
